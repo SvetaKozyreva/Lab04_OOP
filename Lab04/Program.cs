@@ -9,7 +9,7 @@
             public string ft; //Празвище тренера
             public string Vivod()
             {
-                string s = fb + " " + Convert.ToString(w) + " " + ft;
+                string s = $"{fb}\t{Convert.ToString(w)}\t{ft}";
                 return s;
             }
         }
@@ -31,31 +31,30 @@
                 boxers.Add(box);
             }
 
-            Console.WriteLine("Список боксерів:");
+            Console.WriteLine("\nСписок боксерів:");
+            Console.WriteLine("\nБоксер\tПеремог\tТренер");
             for (int i = 0; i < n; i++)
             {
                 Console.WriteLine(boxers[i].Vivod());
             }
 
-            Console.WriteLine("Введіть тренера:");
+            Console.WriteLine("\nВведіть тренера:");
             string trener = Console.ReadLine();
+
             for (int i = 0; i < n; i++)
             {
                 if (boxers[i].ft == trener)
                 {
-                    mw = boxers[i];
-                    Console.WriteLine("\nТренер: {0} {1} {2}", mw.fb, mw.w, mw.ft);
+                    if (boxers[i].w == 0 || boxers[i].w > mw.w)
+                    {
+                        mw = boxers[i];
+                    }
+                    Console.WriteLine(boxers[i].Vivod());
                 }
             }
-
-            for (int i = 0; i < n; i++)
-            {
-                if (boxers[i].ft == trener &&
-                    (boxers[i].w > mw.w)) mw = boxers[i];
-            }
-            Console.WriteLine("\nНайбільше перемог у тренера: {0} {1} {2}", mw.fb, mw.w, mw.ft);
-
-
+            if (mw.w != 0)
+                Console.WriteLine("\nНайбільше перемог у тренера {0}: {1} з {2} перемогами", mw.ft, mw.fb, mw.w);
+            else Console.WriteLine("Немає такого тренера");
         }
     }
 }
