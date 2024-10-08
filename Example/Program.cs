@@ -40,7 +40,7 @@
 
             for (int i = 0; i < n; i++)
             {
-                if (students[i].p == 'x' &&
+                if (students[i].p == 'ж' &&
                     (students[i].gr == 0 || students[i].gr > mx.gr)) mx = students[i];
             }
             if (mx.gr != 0)
